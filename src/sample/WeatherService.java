@@ -15,7 +15,7 @@ import java.util.List;
 public class WeatherService {
 
     private static String WEATHER_URL = "https://api.openweathermap.org/data/2.5/forecast?q=";
-    private static String WEATHER_API_KEY = "&APPID=9d4c25932db02a8f8a6ed63351c7431d";
+    private static String WEATHER_API_KEY = "&units=metric&APPID=9d4c25932db02a8f8a6ed63351c7431d";
     //private static String WEATHER_CITY = "Świdwin";
 
     public static void getData(String location, int daysRange) {
