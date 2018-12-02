@@ -19,17 +19,17 @@ public class GeolocationService {
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
                     conn.setRequestProperty("Accept", "application/json");
-                    System.out.println(conn.getResponseCode() + conn.getResponseMessage());
+                    //System.out.println(conn.getResponseCode() + conn.getResponseMessage());
                     BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
                     String output;
-                    System.out.println("Output from Server .... \n");
+                    //System.out.println("Output from Server .... \n");
                     StringBuilder sb = new StringBuilder();
                     while ((output = br.readLine()) != null) {
                         System.out.println(output);
                         sb.append(output);
                     }
                     JSONObject json = new JSONObject(sb.toString());
-                    System.out.println(json.getString("city"));
+                    //System.out.println(json.getString("city"));
                     conn.disconnect();
                     return json.getString("city");
                 } catch (MalformedURLException e) {
