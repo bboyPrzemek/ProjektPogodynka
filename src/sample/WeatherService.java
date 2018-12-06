@@ -1,5 +1,6 @@
 package sample;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -35,7 +36,9 @@ public class WeatherService {
 
                 sb.append(output);
             }
+
             conn.disconnect();
+
 
             JSONObject json = new JSONObject(sb.toString());
             JSONArray json_list = json.getJSONArray("list");

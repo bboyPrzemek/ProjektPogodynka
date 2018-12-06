@@ -1,5 +1,6 @@
 package sample;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,19 +20,20 @@ public class GeolocationService {
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
                     conn.setRequestProperty("Accept", "application/json");
-                    //System.out.println(conn.getResponseCode() + conn.getResponseMessage());
                     BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
                     String output;
-                    //System.out.println("Output from Server .... \n");
+
                     StringBuilder sb = new StringBuilder();
                     while ((output = br.readLine()) != null) {
                         System.out.println(output);
                         sb.append(output);
                     }
-                    JSONObject json = new JSONObject(sb.toString());
-                    //System.out.println(json.getString("city"));
+                    ObjectMapper objectMapper = new ObjectMapper();
+                    LocationWrapper locationWrapper = objectMapper.readValue(sb.toString(), LocationWrapper.class);
                     conn.disconnect();
-                    return json.getString("city");
+                    System.out.println(locationWrapper.getCity());
+                    return  locationWrapper.getCity();
+
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {

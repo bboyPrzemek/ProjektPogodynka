@@ -18,6 +18,9 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
 
-        WeatherService.getData(GeolocationService.getLocation(), 1);
+
+//        WeatherService.getData(GeolocationService.getLocation(), 1);
+        GeolocationService.getLocation();
+        WeatherService.getData("Warszawa", 1);
     }
 }
