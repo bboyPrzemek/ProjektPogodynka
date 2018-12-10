@@ -22,5 +22,6 @@ public class Main extends Application {
 //        WeatherService.getData(GeolocationService.getLocation(), 1);
         GeolocationService.getLocation();
         WeatherService.getData("Warszawa", 1);
+        DatabaseConnection.connect();
     }
 }

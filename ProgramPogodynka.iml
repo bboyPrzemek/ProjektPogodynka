@@ -39,5 +39,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="json-20131018" level="project" />
+    <orderEntry type="library" exported="" name="sqlite-jdbc-3.23.1" level="project" />
   </component>
 </module>
