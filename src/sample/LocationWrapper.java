@@ -17,7 +17,7 @@ public class LocationWrapper {
         private String zip;
         private float latitude;
         private float longitude;
-        Location LocationObject;
+        LocationObject LocationObject;
 
 
         // Getter Methods
@@ -70,7 +70,7 @@ public class LocationWrapper {
             return longitude;
         }
 
-        public Location getLocation() {
+        public LocationObject getLocation() {
             return LocationObject;
         }
 
@@ -124,13 +124,13 @@ public class LocationWrapper {
             this.longitude = longitude;
         }
 
-        public void setLocation(Location locationObject) {
+        public void setLocation(LocationObject locationObject) {
             this.LocationObject = locationObject;
         }
     }
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-     class Location {
+     class LocationObject {
         private float geoname_id;
         private String capital;
 
