@@ -21,13 +21,14 @@ public class Main extends Application {
 
 
 //        WeatherService.getData(GeolocationService.getLocation(), 1);
-        GeolocationService.getLocation();
-        WeatherService.getData("Warszawa", 1);
-        Location location = new Location("12,12","Koszalin");
-        DatabaseConnection.updateDatabase(location);
-        DatabaseConnection.getLocationFromDatabase();
+//        GeolocationService.getLocation();
+        WeatherService.getData("Koszalin");
+//        Location location = new Location("12,12","Koszalin");
+//        DatabaseConnection.updateDatabase(location);
+//        DatabaseConnection.getLocationFromDatabase();
 
-        Location location1 = DatabaseConnection.getLocationFromDatabase();
-        System.out.println(location1.getName());
+
+//        Location location1 = DatabaseConnection.getLocationFromDatabase();
+//        System.out.println(location1.getName());
     }
 }

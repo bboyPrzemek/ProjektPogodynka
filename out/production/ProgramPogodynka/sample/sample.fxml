@@ -15,14 +15,15 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="mainPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-: green;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<Pane id="mainPane" fx:id="mainPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-: green;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+
    <children>
       <Label layoutX="10.0" layoutY="5.0" text="Miasto:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lblCity" layoutX="90.0" layoutY="5.0" text="Warszawa">
+      <Label fx:id="lblCity" layoutX="90.0" layoutY="5.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -32,7 +33,7 @@
             <Font size="15.0" />
          </font>
       </TextField>
-      <Button fx:id="btnSearch" layoutX="244.0" layoutY="45.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Ok">
+      <Button fx:id="btnSearch" layoutX="244.0" layoutY="45.0" mnemonicParsing="false" onAction="#searchButtonAction" prefHeight="30.0" prefWidth="50.0" text="Ok">
          <font>
             <Font size="15.0" />
          </font>
