@@ -2,6 +2,10 @@
   <library name="sqlite-jdbc-3.23.1">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/libs/sqlite-jdbc-3.23.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jackson-annotations-2.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jackson-core-2.9.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jackson-databind-2.9.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/json-20131018.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
