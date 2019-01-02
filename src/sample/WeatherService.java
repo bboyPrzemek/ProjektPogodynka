@@ -15,50 +15,46 @@ import java.util.List;
 
 public class WeatherService {
 
-    private static String WEATHER_URL = "https://api.openweathermap.org/data/2.5/forecast?q=";
-    private static String WEATHER_API_KEY = "&units=metric&APPID=9d4c25932db02a8f8a6ed63351c7431d";
+    private static String WEATHER_URL = "https://api.weatherbit.io/v2.0/forecast/3hourly?city=";
+    private static String WEATHER_API_KEY = "&key=e68ec873619a4394bc1efdc85f4a2839";
 
-    public static String[] time;
-    public static String[] temp;
-    public static String[] wind;
+    //	e68ec873619a4394bc1efdc85f4a2839
+    //private static String WEATHER_CITY = "Świdwin";
 
-    public static void getData(String location, int daysRange) {
+    public static WeatherWrapper getData(String location) {
         try {
             URL url = new URL(WEATHER_URL+location+WEATHER_API_KEY);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
+
             conn.setRequestProperty("Accept", "application/json");
             BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
             String output;
+
             StringBuilder sb = new StringBuilder();
 
             while ((output = br.readLine()) != null) {
+
                 sb.append(output);
             }
-
             conn.disconnect();
+            ObjectMapper objectMapper = new ObjectMapper();
 
-            time = new String[50];
-            temp = new String[50];
-            wind = new String[50];
+            WeatherWrapper weatherWrapper = objectMapper.readValue(sb.toString(), WeatherWrapper.class);
+            conn.disconnect();
+//            for (Integer i = 0; i<weatherWrapper.getData().size();i++) {
+//                System.out.println("temp: "+weatherWrapper.getData().get(i).getTemp()+" day "+weatherWrapper.getData().get(i).getDatetime()+" icon "+weatherWrapper.getData().get(i).getWeather().getIcon());
+//
+//            }
+            return weatherWrapper;
 
-            JSONObject json = new JSONObject(sb.toString());
-            JSONArray json_list = json.getJSONArray("list");
-            JSONObject json_id, json_temp, json_wind;
 
-            //dla 3h i<=0, dla 6h i<=1, dla 5dni i<=39 json_list.length()
-            for (int i = 0; i <= daysRange; i++) {
-                json_id = json_list.getJSONObject(i);
-                time[i] = json_id.get("dt_txt").toString();
-                json_temp = json_id.getJSONObject("main");
-                temp[i] = json_temp.get("temp").toString();
-                json_wind = json_id.getJSONObject("wind");
-                wind[i] = json_wind.get("speed").toString();
-            }
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return null;
     }
 }
