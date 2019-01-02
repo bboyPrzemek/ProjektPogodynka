@@ -14,6 +14,7 @@ import javafx.scene.control.ScrollPane;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.net.URL;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.scene.image.Image ;
@@ -32,10 +33,8 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         weatherWrapper= WeatherService.getData(GeolocationService.getLocation());
-
         range = 1;
         slRange();
-
         getData();
     }
 
@@ -44,6 +43,7 @@ public class Controller implements Initializable {
         GridPane gp = new GridPane();
         gp.add(new Label("Data"), 0, 0);
         gp.add(new Label("Temperatura[C]"), 1, 0);
+        gp.add(new Label("Temperatura[C]"), 2, 0);
 
 
         for(int i = 1; i <= range+1; i++) {
@@ -66,7 +66,7 @@ public class Controller implements Initializable {
         slRange.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (slRange.getValue() == 0) range = 0;
             if (slRange.getValue() == 1) range = 1;
-            if (slRange.getValue() == 2) range = 6;
+            if (slRange.getValue() == 2) range = 4;
             getData();
 
         });
@@ -74,7 +74,9 @@ public class Controller implements Initializable {
 
     public void btnSearch(javafx.event.ActionEvent actionEvent) {
 
-        weatherWrapper=WeatherService.getData(txtCity.getText());
+        String town =Normalizer.normalize(txtCity.getText(), Normalizer.Form.NFD);
+        town = town.replaceAll("[^\\p{ASCII}]", "");
+        weatherWrapper=WeatherService.getData(town);
 
             lblCity.setText(txtCity.getText());
             getData();

@@ -16,7 +16,7 @@ import java.util.List;
 public class WeatherService {
 
     private static String WEATHER_URL = "https://api.weatherbit.io/v2.0/forecast/3hourly?city=";
-    private static String WEATHER_API_KEY = "&key=e68ec873619a4394bc1efdc85f4a2839";
+    private static String WEATHER_API_KEY = "&key=e68ec873619a4394bc1efdc85f4a2839&lang=pl";
 
     //	e68ec873619a4394bc1efdc85f4a2839
     //private static String WEATHER_CITY = "Świdwin";
