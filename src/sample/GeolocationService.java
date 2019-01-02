@@ -23,7 +23,7 @@ public class GeolocationService {
             String output;
             StringBuilder sb = new StringBuilder();
             while ((output = br.readLine()) != null) {
-                System.out.println(output);
+                //System.out.println(output);
                 sb.append(output);
             }
             ObjectMapper objectMapper = new ObjectMapper();

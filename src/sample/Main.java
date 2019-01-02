@@ -13,16 +13,15 @@ public class Main extends Application {
         primaryStage.setTitle("Pogodynka");
         primaryStage.setScene(new Scene(root, 290, 590));
         primaryStage.setResizable(false);
+        primaryStage.setOnHidden(e -> sample.Controller.closeAction());
         primaryStage.show();
     }
 
     public static void main(String[] args) {
         launch(args);
 
-
-        ///WeatherService.getData(GeolocationService.getLocation(), 1);
+        //WeatherService.getData(GeolocationService.getLocation(), 1);
         //GeolocationService.getLocation();
-        //WeatherService.getData("Warszawa", 1);
         //Location location = new Location("12,12","Koszalin");
         //DatabaseConnection.updateDatabase(location);
         //DatabaseConnection.getLocationFromDatabase();

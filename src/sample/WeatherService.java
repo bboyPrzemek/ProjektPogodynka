@@ -17,54 +17,44 @@ public class WeatherService {
 
     private static String WEATHER_URL = "https://api.openweathermap.org/data/2.5/forecast?q=";
     private static String WEATHER_API_KEY = "&units=metric&APPID=9d4c25932db02a8f8a6ed63351c7431d";
-    //private static String WEATHER_CITY = "Świdwin";
+
+    public static String[] time;
+    public static String[] temp;
+    public static String[] wind;
 
     public static void getData(String location, int daysRange) {
         try {
             URL url = new URL(WEATHER_URL+location+WEATHER_API_KEY);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
-
             conn.setRequestProperty("Accept", "application/json");
-            //System.out.println(conn.getResponseCode() + conn.getResponseMessage());
             BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
             String output;
-
             StringBuilder sb = new StringBuilder();
 
             while ((output = br.readLine()) != null) {
-
                 sb.append(output);
             }
 
             conn.disconnect();
 
+            time = new String[50];
+            temp = new String[50];
+            wind = new String[50];
 
             JSONObject json = new JSONObject(sb.toString());
             JSONArray json_list = json.getJSONArray("list");
             JSONObject json_id, json_temp, json_wind;
-            List<String> temp = new ArrayList<>();
-            List<String> dt_txt = new ArrayList<>();
-            List<String> wind = new ArrayList<>();
 
             //dla 3h i<=0, dla 6h i<=1, dla 5dni i<=39 json_list.length()
             for (int i = 0; i <= daysRange; i++) {
-
                 json_id = json_list.getJSONObject(i);
-                dt_txt.add(json_id.get("dt_txt").toString());
+                time[i] = json_id.get("dt_txt").toString();
                 json_temp = json_id.getJSONObject("main");
-                temp.add(json_temp.get("temp").toString());
+                temp[i] = json_temp.get("temp").toString();
                 json_wind = json_id.getJSONObject("wind");
-                wind.add(json_wind.get("speed").toString());
-
-                System.out.println(json_id);
+                wind[i] = json_wind.get("speed").toString();
             }
-
-            System.out.println(temp);
-            System.out.println(dt_txt);
-            System.out.println(wind);
-            System.out.println(location);
-
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
