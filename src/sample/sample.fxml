@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="mainPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<Pane fx:id="mainPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <Label layoutX="10.0" layoutY="5.0" text="Miasto:">
          <font>
@@ -38,7 +38,7 @@
       <Separator layoutY="40.0" prefHeight="0.0" prefWidth="360.0" />
       <Slider fx:id="slRange" blockIncrement="1.0" layoutX="25.0" layoutY="95.0" majorTickUnit="1.0" max="2.0" minorTickCount="0" onMouseClicked="#slRange" prefHeight="30.0" prefWidth="310.0" snapToTicks="true" value="1.0">
          <effect>
-            <Glow level="1.0" />
+            <Glow />
          </effect>
          <cursor>
             <Cursor fx:constant="DEFAULT" />

@@ -2,8 +2,7 @@ package sample;
 
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Slider;
@@ -13,12 +12,11 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.ScrollPane;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
+
 import java.net.URL;
 
 import java.text.Normalizer;
-import java.util.ArrayList;
+
 
  
 import java.util.ResourceBundle;
@@ -35,15 +33,20 @@ public class Controller implements Initializable {
     public int range;
     private WeatherWrapper weatherWrapper;
 
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         weatherWrapper= WeatherService.getData(GeolocationService.getLocation());
         range = 1;
-        slRange();
+
         getData();
+        slRange();
+
     }
     public void getData() {
+
         GridPane gp = new GridPane();
+
 
         //przerwy miedzy kolumnami i wierszami
         gp.setHgap(3);
@@ -71,29 +74,34 @@ public class Controller implements Initializable {
         gp.add(lblDate, 0, 0);
         gp.add(lblTemp, 1, 0);
 
-        for(int i = 1; i <= range+1; i++) {
+        for(int i = 0; i < range+1; i++) {
+            System.out.println("petla"+i);
             Label lblNewDate = new Label(weatherWrapper.getData().get(i).getDatetime());
             lblNewDate.setFont(javafx.scene.text.Font.font("Verdana", FontWeight.BOLD, 12));
 
             Label lblNewTemp = new Label(weatherWrapper.getData().get(i).getTemp().toString());
             lblNewTemp.setFont(javafx.scene.text.Font.font("Verdana", FontWeight.BOLD, 20));
 
-            gp.add(lblNewDate, 0, i);
-            gp.add(lblNewTemp, 1, i);
+            gp.add(lblNewDate, 0, i+1);
+            gp.add(lblNewTemp, 1, i+1);
 
             /*OD TEGO SIE ZACINA */
             Image image = new Image("https://www.weatherbit.io/static/img/icons/"+weatherWrapper.getData().get(i).getWeather().getIcon()+".png");
-            gp.add(new ImageView(image),2,i);
+            System.out.println(image);
+            gp.add(new ImageView(image),2,i+1);
         }
         weatherPane.setContent(gp);
     }
     public void slRange() {
+
         slRange.valueProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println(slRange.valueProperty());
             if (slRange.getValue() == 0) range = 0;
             if (slRange.getValue() == 1) range = 1;
-            if (slRange.getValue() == 2) range = 38;
-            getData();
+            if (slRange.getValue() == 2) range = 4;
+
         });
+        getData();
     }
     public void btnSearch(javafx.event.ActionEvent actionEvent) {
         String town =Normalizer.normalize(txtCity.getText(), Normalizer.Form.NFD);
