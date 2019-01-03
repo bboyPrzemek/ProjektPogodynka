@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="mainPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-: green;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<Pane fx:id="mainPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" style="-fx-background-color: yellow;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <Label layoutX="10.0" layoutY="5.0" text="Miasto:">
          <font>
@@ -24,19 +24,19 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCity" layoutX="10.0" layoutY="45.0" prefHeight="31.0" prefWidth="230.0">
+      <TextField fx:id="txtCity" layoutX="10.0" layoutY="45.0" prefHeight="31.0" prefWidth="272.0">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <Button fx:id="btnSearch" layoutX="244.0" layoutY="45.0" mnemonicParsing="false" onAction="#btnSearch" prefHeight="30.0" prefWidth="50.0" text="Ok">
+      <Button fx:id="btnSearch" layoutX="285.0" layoutY="45.0" mnemonicParsing="false" onAction="#btnSearch" prefHeight="30.0" prefWidth="71.0" text="Ok">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Separator layoutY="80.0" prefHeight="0.0" prefWidth="300.0" />
-      <Separator layoutY="40.0" prefHeight="0.0" prefWidth="300.0" />
-      <Slider fx:id="slRange" blockIncrement="1.0" layoutX="25.0" layoutY="95.0" majorTickUnit="1.0" max="2.0" minorTickCount="0" onMouseClicked="#slRange" prefHeight="30.0" prefWidth="250.0" snapToTicks="true" value="1.0">
+      <Separator layoutY="80.0" prefHeight="0.0" prefWidth="360.0" />
+      <Separator layoutY="40.0" prefHeight="0.0" prefWidth="360.0" />
+      <Slider fx:id="slRange" blockIncrement="1.0" layoutX="25.0" layoutY="95.0" majorTickUnit="1.0" max="2.0" minorTickCount="0" onMouseClicked="#slRange" prefHeight="30.0" prefWidth="310.0" snapToTicks="true" value="1.0">
          <effect>
             <Glow level="1.0" />
          </effect>
@@ -49,18 +49,18 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="lblSixHours" alignment="CENTER" layoutX="125.0" layoutY="85.0" onMouseClicked="#lblSixHours" text="6 hours">
+      <Label fx:id="lblSixHours" alignment="CENTER" layoutX="155.0" layoutY="85.0" onMouseClicked="#lblSixHours" text="6 hours">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="lblFiveDays" alignment="CENTER" layoutX="229.0" layoutY="85.0" onMouseClicked="#lblFiveDays" text="5 days">
+      <Label fx:id="lblFiveDays" alignment="CENTER" layoutX="280.0" layoutY="85.0" onMouseClicked="#lblFiveDays" text="5 days">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Separator layoutY="125.0" prefHeight="0.0" prefWidth="300.0" />
-      <ScrollPane fx:id="weatherPane" layoutY="130.0" prefHeight="470.0" prefWidth="300.0" style="-fx-background-color: gray;">
+      <Separator layoutY="125.0" prefHeight="0.0" prefWidth="360.0" />
+      <ScrollPane fx:id="weatherPane" layoutY="130.0" prefHeight="570.0" prefWidth="360.0" style="-fx-background-color: gray; -fx-border-color: yellow;">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
