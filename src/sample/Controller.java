@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.ScrollPane;
@@ -46,13 +47,14 @@ public class Controller implements Initializable {
     public void getData() {
 
         GridPane gp = new GridPane();
+        gp.setStyle("-fx-background-color: SKYBLUE");
 
 
         //przerwy miedzy kolumnami i wierszami
         gp.setHgap(3);
         gp.setVgap(3);
         //widoczne linie dzielące pola
-        gp.setGridLinesVisible(true);
+        gp.setGridLinesVisible(false);
         //wyśrodkowanie kolumn i nadanie odpowiedniej szerokości i dodanie do gp
         ColumnConstraints column0 = new ColumnConstraints(110);
         column0.setHalignment(HPos.CENTER);
