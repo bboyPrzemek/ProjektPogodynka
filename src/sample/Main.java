@@ -11,7 +11,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Pogodynka");
-        primaryStage.setScene(new Scene(root, 290, 590));
+        primaryStage.setScene(new Scene(root, 350, 690));
         primaryStage.setResizable(false);
         primaryStage.setOnHidden(e -> sample.Controller.closeAction());
         primaryStage.show();
