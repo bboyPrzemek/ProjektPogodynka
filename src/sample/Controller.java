@@ -56,13 +56,13 @@ public class Controller implements Initializable {
         //widoczne linie dzielące pola
         gp.setGridLinesVisible(false);
         //wyśrodkowanie kolumn i nadanie odpowiedniej szerokości i dodanie do gp
-        ColumnConstraints column0 = new ColumnConstraints(110);
+        ColumnConstraints column0 = new ColumnConstraints(125);
         column0.setHalignment(HPos.CENTER);
         gp.getColumnConstraints().add(column0);
         ColumnConstraints column1 = new ColumnConstraints(100);
         column1.setHalignment(HPos.CENTER);
         gp.getColumnConstraints().add(column1);
-        ColumnConstraints column2 = new ColumnConstraints(110);
+        ColumnConstraints column2 = new ColumnConstraints(105);
         column2.setHalignment(HPos.CENTER);
         gp.getColumnConstraints().add(column2);
 
@@ -78,7 +78,8 @@ public class Controller implements Initializable {
 
         for(int i = 0; i < range+1; i++) {
             System.out.println("petla"+i);
-            Label lblNewDate = new Label(weatherWrapper.getData().get(i).getDatetime());
+            Label lblNewDate = new Label(UnixToTimeConverter.convert(Long.valueOf(weatherWrapper.getData().get(i).getTs())));
+            System.out.println(lblNewDate);
             lblNewDate.setFont(javafx.scene.text.Font.font("Verdana", FontWeight.BOLD, 12));
 
             Label lblNewTemp = new Label(weatherWrapper.getData().get(i).getTemp().toString());
