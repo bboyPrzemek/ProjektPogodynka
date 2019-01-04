@@ -15,7 +15,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Pogodynka");
-        primaryStage.setScene(new Scene(root, 350, 690, Color.DEEPSKYBLUE));
+        primaryStage.setScene(new Scene(root, 360, 690, Color.DEEPSKYBLUE));
         primaryStage.setResizable(false);
         primaryStage.setOnHidden(e -> sample.Controller.closeAction());
         primaryStage.show();
@@ -24,8 +24,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-        UnixToTimeConverter.convert(1503954000);
-
 
     }
 }

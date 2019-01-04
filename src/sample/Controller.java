@@ -76,32 +76,70 @@ public class Controller implements Initializable {
         gp.add(lblDate, 0, 0);
         gp.add(lblTemp, 1, 0);
 
-        for(int i = 0; i < range+1; i++) {
-            System.out.println("petla"+i);
-            Label lblNewDate = new Label(UnixToTimeConverter.convert(Long.valueOf(weatherWrapper.getData().get(i).getTs())));
-            System.out.println(lblNewDate);
-            lblNewDate.setFont(javafx.scene.text.Font.font("Verdana", FontWeight.BOLD, 12));
+        if (slRange.getValue() != 2) {
 
-            Label lblNewTemp = new Label(weatherWrapper.getData().get(i).getTemp().toString());
-            lblNewTemp.setFont(javafx.scene.text.Font.font("Verdana", FontWeight.BOLD, 20));
+            for (Integer i = 0; i < range + 1; i++) {
+                System.out.println("petla" + i);
+                Label lblNewDate = new Label(UnixToTimeConverter.convert(Long.valueOf(weatherWrapper.getData().get(i).getTs())));
+                System.out.println(lblNewDate);
+                lblNewDate.setFont(javafx.scene.text.Font.font("Verdana", FontWeight.BOLD, 12));
 
-            gp.add(lblNewDate, 0, i+1);
-            gp.add(lblNewTemp, 1, i+1);
+                Label lblNewTemp = new Label(weatherWrapper.getData().get(i).getTemp().toString());
+                lblNewTemp.setFont(javafx.scene.text.Font.font("Verdana", FontWeight.BOLD, 20));
 
-            /*OD TEGO SIE ZACINA */
-            Image image = new Image("https://www.weatherbit.io/static/img/icons/"+weatherWrapper.getData().get(i).getWeather().getIcon()+".png");
-            System.out.println(image);
-            gp.add(new ImageView(image),2,i+1);
+                gp.add(lblNewDate, 0, i + 1);
+                gp.add(lblNewTemp, 1, i + 1);
+
+                /*OD TEGO SIE ZACINA */
+                Image image = new Image("https://www.weatherbit.io/static/img/icons/" + weatherWrapper.getData().get(i).getWeather().getIcon() + ".png");
+                System.out.println(image);
+                gp.add(new ImageView(image), 2, i + 1);
+            }
+            weatherPane.setContent(gp);
+        }else {
+            for (Integer i = 0; i < range +1; i++) {
+                System.out.println("petla" + i);
+                if (UnixToTimeConverter.convert(Long.valueOf(weatherWrapper.getData().get(i).getTs())).contains("12:00")) {
+                    String time = UnixToTimeConverter.convert(Long.valueOf(weatherWrapper.getData().get(i).getTs()));
+                    time = time.split(" ")[0];
+                    Label lblNewDate = new Label(time);
+                    System.out.println(lblNewDate);
+                    lblNewDate.setFont(javafx.scene.text.Font.font("Verdana", FontWeight.BOLD, 12));
+
+                    Label lblNewTemp = new Label(weatherWrapper.getData().get(i).getTemp().toString());
+                    lblNewTemp.setFont(javafx.scene.text.Font.font("Verdana", FontWeight.BOLD, 20));
+
+                    gp.add(lblNewDate, 0, i + 1);
+                    gp.add(lblNewTemp, 1, i + 1);
+
+                    /*OD TEGO SIE ZACINA */
+                    Image image = new Image("https://www.weatherbit.io/static/img/icons/" + weatherWrapper.getData().get(i).getWeather().getIcon() + ".png");
+                    System.out.println(image);
+                    gp.add(new ImageView(image), 2, i + 1);
+                }
+                weatherPane.setContent(gp);
+
+            }
         }
-        weatherPane.setContent(gp);
     }
+
+
     public void slRange() {
 
         slRange.valueProperty().addListener((observable, oldValue, newValue) -> {
             System.out.println(slRange.valueProperty());
-            if (slRange.getValue() == 0) range = 0;
-            if (slRange.getValue() == 1) range = 1;
-            if (slRange.getValue() == 2) range = 4;
+
+            if (slRange.getValue() == 0) {
+                range = 0;
+            }
+            else if (slRange.getValue() == 1) {
+                range = 1;
+            }
+
+            else if (slRange.getValue() == 2) {
+                range = 38;
+
+            }
 
         });
         getData();
