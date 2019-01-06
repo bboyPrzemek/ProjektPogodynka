@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import javax.xml.crypto.Data;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -23,7 +24,10 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+
+       launch(args);
+
+//System.out.println(GeolocationService.getLocation().getName());
 
     }
 }

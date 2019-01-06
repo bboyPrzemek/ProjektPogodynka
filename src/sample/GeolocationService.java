@@ -14,7 +14,7 @@ public class GeolocationService {
     private static String LOCATION_URL = "http://api.ipstack.com/check?access_key=";
     private static String LOCATION_API_KEY = "f6615b8da04b3c16a49a895974104e67";
 
-    public static String getLocation() {
+    public static Location getLocation() {
         try {
             URL url = new URL(LOCATION_URL + LOCATION_API_KEY);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -29,7 +29,8 @@ public class GeolocationService {
             ObjectMapper objectMapper = new ObjectMapper();
             LocationWrapper locationWrapper = objectMapper.readValue(sb.toString(), LocationWrapper.class);
             conn.disconnect();
-            return locationWrapper.getCity();
+            Location location = new Location(locationWrapper.getLatitude()+","+locationWrapper.getLongitude(),locationWrapper.getCity());
+            return location;
 
         } catch (MalformedURLException e) {
             e.printStackTrace();

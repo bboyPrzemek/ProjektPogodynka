@@ -33,11 +33,17 @@ public class Controller implements Initializable {
     public ScrollPane weatherPane;
     public int range;
     private WeatherWrapper weatherWrapper;
+    private Location location;
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        weatherWrapper= WeatherService.getData(GeolocationService.getLocation());
+
+        location=GeolocationService.getLocation();
+        weatherWrapper= WeatherService.getData(location.getName());
+
+        DatabaseController.Controller(location);
+
         range = 1;
 
         getData();
@@ -155,6 +161,7 @@ public class Controller implements Initializable {
     public void lblSixHours(MouseEvent mouseEvent) { slRange.setValue(1); slRange(); }
     public void lblFiveDays(MouseEvent mouseEvent) { slRange.setValue(2); slRange(); }
     public static void closeAction(){
+
         //zapis do bazy
         System.exit(0);
     }
