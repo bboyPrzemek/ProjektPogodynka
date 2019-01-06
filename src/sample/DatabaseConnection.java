@@ -20,8 +20,8 @@ public class DatabaseConnection {
             // polecenie SQL tworzące tablicę
             String tabelaSQL = "CREATE TABLE " + tableName
                     + " (ID INT PRIMARY KEY     NOT NULL,"
-                    + " NAME         CHAR(50)    NOT NULL, "
-                    + " COORDS        CHAR(50)     NOT NULL)";
+
+                    + " NAME        CHAR(50)     NOT NULL)";
 
             // wywołanie polecenia
             stat.executeUpdate(tabelaSQL);
@@ -56,11 +56,11 @@ public class DatabaseConnection {
             polaczenie = DriverManager.getConnection("jdbc:sqlite:" + dbName + ".db");
 
             stat = polaczenie.createStatement();
-            String dodajSQL = "INSERT INTO " + tableName + " (ID, NAME, COORDS) "
+            String dodajSQL = "INSERT INTO " + tableName + " (ID, NAME) "
                     + "VALUES ("
                     + location.getID() + ","
-                    + "'" + location.getName() + "',"
-                    + "'" + location.getCoords() + "');";
+
+                    + "'" + location.getName() + "');";
             stat.executeUpdate(dodajSQL);
             stat.close();
             polaczenie.close();
@@ -80,8 +80,8 @@ public class DatabaseConnection {
             conn.setAutoCommit(false);
 
             String sql = "UPDATE Location SET " +
-                    "name='" + location.getName() + "'," +
-                    " coords='" + location.getCoords() + "'";
+                    "name='" + location.getName() + "'" ;
+
 
             System.out.println("Update successful");
 
@@ -117,10 +117,9 @@ public class DatabaseConnection {
             conn.commit();
 
             String name= rs.getString("name");
-            String coords=rs.getString("coords");
-            Location location = new Location(coords,name);
 
-            System.out.println(location.getCoords());
+            Location location = new Location(name);
+
             System.out.println(location.getName());
             return location;
 

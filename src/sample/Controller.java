@@ -27,7 +27,7 @@ import javafx.scene.text.FontWeight;
 public class Controller implements Initializable {
 
     public TextField txtCity;
-    public Label lblCity;
+    public    Label lblCity;
     public Slider slRange;
     public GridPane gpWeather, gpWeatherInfo;
     public ScrollPane weatherPane;
@@ -41,11 +41,10 @@ public class Controller implements Initializable {
 
         location=GeolocationService.getLocation();
         weatherWrapper= WeatherService.getData(location.getName());
-
+        lblCity.setText(location.getName());
         DatabaseController.Controller(location);
 
         range = 1;
-
         getData();
         slRange();
 
@@ -156,10 +155,12 @@ public class Controller implements Initializable {
         weatherWrapper=WeatherService.getData(town);
         lblCity.setText(txtCity.getText());
         getData();
+
     }
     public void lblNow(MouseEvent mouseEvent) { slRange.setValue(0); slRange(); }
     public void lblSixHours(MouseEvent mouseEvent) { slRange.setValue(1); slRange(); }
     public void lblFiveDays(MouseEvent mouseEvent) { slRange.setValue(2); slRange(); }
+
     public static void closeAction(){
 
         //zapis do bazy

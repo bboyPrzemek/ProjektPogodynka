@@ -29,7 +29,7 @@ public class GeolocationService {
             ObjectMapper objectMapper = new ObjectMapper();
             LocationWrapper locationWrapper = objectMapper.readValue(sb.toString(), LocationWrapper.class);
             conn.disconnect();
-            Location location = new Location(locationWrapper.getLatitude()+","+locationWrapper.getLongitude(),locationWrapper.getCity());
+            Location location = new Location(locationWrapper.getCity());
             return location;
 
         } catch (MalformedURLException e) {
