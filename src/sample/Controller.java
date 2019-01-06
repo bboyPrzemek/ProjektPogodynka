@@ -48,11 +48,12 @@ public class Controller implements Initializable {
         getData();
         slRange();
 
+
     }
     public void getData() {
 
         GridPane gp = new GridPane();
-        gp.setStyle("-fx-background-color: SKYBLUE");
+
 
 
         //przerwy miedzy kolumnami i wierszami
@@ -150,12 +151,21 @@ public class Controller implements Initializable {
         getData();
     }
     public void btnSearch(javafx.event.ActionEvent actionEvent) {
-        String town =Normalizer.normalize(txtCity.getText(), Normalizer.Form.NFD);
-        town = town.replaceAll("[^\\p{ASCII}]", "");
-        weatherWrapper=WeatherService.getData(town);
-        lblCity.setText(txtCity.getText());
-        getData();
+        try {
+            String town = Normalizer.normalize(txtCity.getText(), Normalizer.Form.NFD);
+            town = town.replaceAll("[^\\p{ASCII}]", "");
+            weatherWrapper = WeatherService.getData(town);
+            lblCity.setText(txtCity.getText());
+            getData();
 
+
+        }catch (Exception e){
+            String city = "Warsaw";
+            lblCity.setText(city);
+            txtCity.setText(city);
+            weatherWrapper= WeatherService.getData(city);
+            getData();
+        }
     }
     public void lblNow(MouseEvent mouseEvent) { slRange.setValue(0); slRange(); }
     public void lblSixHours(MouseEvent mouseEvent) { slRange.setValue(1); slRange(); }
